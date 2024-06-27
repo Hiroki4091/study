@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* body全体にスタイルが当たっていてもその中の要素を指定した方が優先される */
+h1 ,h2, h3 {
+    font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+h2 {
+    border-bottom: 1px solid #121314;
+}
+
+ul li, ol li {
+    padding: 1em;
+    list-style-position: inside;
+
+}
+
+#section-correct-answer {
+    display: none;
+}
+
+ol.choices {
+    list-style: upper-alpha;
+}
+
+ol.choices li:hover {
+    border: 0.1em solid #007fff;
+    background-color: #cef787;
+    padding: 0.9em;
+    cursor: pointer;
+}
+
+#answer {
+    font-size: 20px;
+}
+
+#main {
+    padding: 0 1.5em;
+}
+
+div.section {
+    margin-top: 2em;
+}
