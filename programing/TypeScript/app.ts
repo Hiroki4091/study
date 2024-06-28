@@ -1,50 +1,18 @@
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     // Tupleの書き方
-//     role: [number, string];
-// } = {
-//     name : "hiroki",
-//     age : 25,
-//     hobbies : ['Sports', 'Cooking'],
-//     role: [2, 'author'],
-// };
 
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHER = 2;
-
-// 自動的に0から数字が割り当てられる
-// 数字を設定可能（その後の数字は＋1されていく）
-// 各々の数字を指定可能
-// 文字列の指定可能
-enum Role {
-  ADMIN = 'ADMIN',
-  READ_ONLY = 100,
-  AUTHER = 200,
+// union型 : 複数の型指定ができる
+function combine(input1: number | string, input2: number | string) {
+    let result;
+    // typeof: 型を確認できる  input1とinput2がnumber型なら計算
+    if (typeof input1 === 'number' && typeof input2 === 'number') {
+        result = input1 + input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 }
 
-const person = {
-  name: "hiroki",
-  age: 25,
-  hobbies: ["Sports", "Cooking"],
-  role: Role.ADMIN,
-};
+const combineAges = combine(30, 21);
+console.log(combineAges);
 
-// person.role[1] = 10;
-// person.role = [0, 'admin', 'user'];
-
-// stringの配列
-let favoriteActivities: string[];
-favoriteActivities = ["Sports"];
-
-console.log(person);
-
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase);
-}
-
-if (person.role == Role.ADMIN) {
-  console.log("管理者ユーザー");
-}
+const combinedNames = combine('Max', 'Anna');
+console.log(combinedNames);
