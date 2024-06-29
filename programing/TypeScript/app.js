@@ -5,8 +5,16 @@ function add(n1, n2) {
 function printResult(num) {
     console.log("Result: " + num);
 }
-// 関数であることを指定する(引数の型を定義できる)
+// 関数であることを指定する let combineValues: Function;
+// どのような引数を受け取り何を返すかを指定することができる
 var combineValues;
+function addAndHandle(n1, n2, cb) {
+    var result = n1 + n2;
+    cb(result);
+}
+addAndHandle(10, 20, function (result) {
+    console.log(result);
+});
 combineValues = add;
 // combineValues = printResult;
 // combineValues = 5;

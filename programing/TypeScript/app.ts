@@ -12,6 +12,16 @@ function printResult(num: number): void {
 // どのような引数を受け取り何を返すかを指定することができる
 let combineValues: (a: number, b: number) => number;
 
+// コールバック関数
+function addAndHandle(n1: number, n2: number, cb:(num: number) => void) {
+    const result = n1 + n2;
+    cb(result);
+}
+
+addAndHandle(10, 20, (result) => {
+    console.log(result);
+});
+
 combineValues = add;
 // combineValues = printResult;
 // combineValues = 5;

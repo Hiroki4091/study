@@ -72,3 +72,21 @@ function isOlder(user: User, checkAge: number) {
   return checkAge > user.age;
 }
 ```
+
+#### コールバック関数
+他の関数に引数として渡され、後で実行される関数
+コールバック関数は、非同期処理や関数の振る舞いを制御するために広く使用されている
+
+#### 主な特徴と使用方法
+1. 定義と使用:他の関数の引数として渡される
+```typescript
+function add(a: number, b: number, callback: (result: number) => void): void {
+  const result = a + b;
+  callback(result);
+}
+
+add(1, 2, (result) => {
+  console.log(result); // 3
+});
+```
+add関数が計算結果をコールバック関数に渡している
