@@ -1,38 +1,21 @@
-// 型を再利用する時に便利 *JavaScriptで存在しているDateなどは使えない
-type Combinable = number | string;
-type ConversionDesscripter = 'as-number' | 'as-text';
-
-// union型 : 複数の型指定ができる
-function combine(
-  input1: Combinable,
-  input2: Combinable,
-  // どんな値を入れるか決めることができる
-  resultConversion: ConversionDesscripter
-) {
-  let result;
-  // typeof: 型を確認できる  input1とinput2がnumber型なら計算
-  if (
-    (typeof input1 === "number" && typeof input2 === "number") ||
-    resultConversion === "as-number"
-  ) {
-    result = +input1 + +input2;
-  } else {
-    result = input1.toString() + input2.toString();
-  }
-  return result;
-  //   if (resultConversion === "as-number") {
-  //     return +result;
-  //   } else {
-  //     return result.toString();
-  //   }
+function add(n1: number, n2: number) {
+  return n1 + n2;
 }
 
-const combineAges = combine(30, 21, "as-number");
-console.log(combineAges);
+// 戻り値を指定することができる
+function printResult(num: number): void {
+  console.log("Result: " + num);
+}
 
-// 引数は文字列だが、結果は数値で返したい
-const combineStringAges = combine("30", "21", "as-number");
-console.log(combineStringAges);
+// 関数であることを指定する let combineValues: Function;
 
-const combinedNames = combine("Max", "Anna", "as-text");
-console.log(combinedNames);
+// どのような引数を受け取り何を返すかを指定することができる
+let combineValues: (a: number, b: number) => number;
+
+combineValues = add;
+// combineValues = printResult;
+// combineValues = 5;
+
+console.log(combineValues(8, 8));
+
+printResult(add(5, 12));
