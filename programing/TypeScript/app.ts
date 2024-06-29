@@ -1,9 +1,13 @@
+// 型を再利用する時に便利 *JavaScriptで存在しているDateなどは使えない
+type Combinable = number | string;
+type ConversionDesscripter = 'as-number' | 'as-text';
+
 // union型 : 複数の型指定ができる
 function combine(
-  input1: number | string,
-  input2: number | string,
+  input1: Combinable,
+  input2: Combinable,
   // どんな値を入れるか決めることができる
-  resultConversion: "as-number" | "as-text"
+  resultConversion: ConversionDesscripter
 ) {
   let result;
   // typeof: 型を確認できる  input1とinput2がnumber型なら計算

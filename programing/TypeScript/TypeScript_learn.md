@@ -40,3 +40,35 @@ tsc ファイル名
     - 必要でない限り使わない方がいい
 - Union：複数の型を指定できる
 - Literal：型の値を指定して使用できる
+- エイリアス：自分自身の型を定義する時に使用する
+    - 複雑になりやすい Object 型に対しても型エイリアスを使うことができます。
+
+例:
+```typescript
+type User = { name: string; age: number };
+const u1: User = { name: 'Max', age: 30 }; // this works!
+```
+型エイリアスにより、不必要なコードを繰り返し記述することを避けることができる。また、型の定義を一箇所で管理することができる。
+
+例）型エイリアスを使っていないコード：
+```typescript
+function greet(user: { name: string; age: number }) {
+  console.log('Hi, I am ' + user.name);
+}
+ 
+function isOlder(user: { name: string; age: number }, checkAge: number) {
+  return checkAge > user.age;
+}
+```
+例）型エイリアスを使ったコード:
+```typescript
+type User = { name: string; age: number };
+ 
+function greet(user: User) {
+  console.log('Hi, I am ' + user.name);
+}
+ 
+function isOlder(user: User, checkAge: number) {
+  return checkAge > user.age;
+}
+```
