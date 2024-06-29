@@ -31,11 +31,12 @@ tsc ファイル名
 
 ## 型
 
-- number, string, boolean, object, Array, Tuple, Enum, Any, union
+- number, string, boolean, object, Array, Tuple, Enum, Any, Union, Literal
     - 型推論の機能があるため、型を明記しなくてもいい
 - object型：key → type(型)
 - Tuple ：長さが固定の配列
 - Enum：列挙型
 - Any：どんな値でもいい。型を指定しない
     - 必要でない限り使わない方がいい
-- union：複数の型を指定できる
+- Union：複数の型を指定できる
+- Literal：型の値を指定して使用できる
