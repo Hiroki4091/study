@@ -6,11 +6,4 @@ userInput = "Max";
 if (typeof userInput === "string") {
     userName = userInput;
 }
-function genetareError(message, code) {
-    throw {
-        message: message,
-        error: code,
-    };
-}
-const result = genetareError('エラーが発生しました', 500);
-console.log(result);
+//# sourceMappingURL=app.js.map

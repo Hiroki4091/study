@@ -20,3 +20,4 @@ for (const hobby of person.hobbies) {
 if (person.role == Role.ADMIN) {
     console.log("管理者ユーザー");
 }
+//# sourceMappingURL=ogjs-array-enums.js.map
