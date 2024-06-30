@@ -102,3 +102,8 @@ tsc --init
 - 上記コマンドを打つことでこのディレクトリがtypescriptのプロジェクトであると伝えることができる
 - tsconfig.json
   - typescriptによって管理されるべきもの
+
+## コンパイルの設定
+### 参考資料
+- [コンパイル設定ファイルについて](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+- [TypeScript:公式ドキュメント](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
