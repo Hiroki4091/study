@@ -10,12 +10,12 @@ if (typeof userInput === "string") {
 }
 
 // never型：戻り値を絶対に返さないと明示的に表すことができる
-function genetareError(message: string, code: number): never {
-  throw {
-    message: message,
-    error: code,
-  };
-}
+// function genetareError(message: string, code: number): never {
+//   throw {
+//     message: message,
+//     error: code,
+//   };
+// }
 
-const result = genetareError('エラーが発生しました', 500);
-console.log(result);
+// const result = genetareError('エラーが発生しました', 500);
+// console.log(result);
