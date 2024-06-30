@@ -1,16 +1,18 @@
-var userInput;
-var userName;
+"use strict";
+let userInput;
+let userName;
 userInput = 5;
 userInput = "Max";
 // 型を指定すれば代入できる
 if (typeof userInput === "string") {
     userName = userInput;
 }
+// never型：戻り値を絶対に返さないと明示的に表すことができる
 function genetareError(message, code) {
     throw {
         message: message,
         error: code,
     };
 }
-var result = genetareError('エラーが発生しました', 500);
+const result = genetareError('エラーが発生しました', 500);
 console.log(result);
