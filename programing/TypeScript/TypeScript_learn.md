@@ -93,4 +93,12 @@ add関数が計算結果をコールバック関数に渡している
 
 ## 役に立つ資料
 - [TypeScript：公式ドキュメント](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
-- [TypeScriptの型システム](https://typescript-jp.gitbook.io/deep-dive/type-system)
+[TypeScriptの型システム](https://typescript-jp.gitbook.io/deep-dive/type-system)
+
+## プロジェクトをコンパイル
+```bash
+tsc --init
+```
+- 上記コマンドを打つことでこのディレクトリがtypescriptのプロジェクトであると伝えることができる
+- tsconfig.json
+  - typescriptによって管理されるべきもの
