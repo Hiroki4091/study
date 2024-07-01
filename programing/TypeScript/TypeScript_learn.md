@@ -107,3 +107,7 @@ tsc --init
 ### 参考資料
 - [コンパイル設定ファイルについて](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 - [TypeScript:公式ドキュメント](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+
+## データ構造
+- [JavaScriptのデータ構造](https://developer.mozilla.org/ja/docs/Web/JavaScript/Data_structures)
+- [プリミティブ型について](https://developer.mozilla.org/ja/docs/Glossary/Primitive)
