@@ -1,6 +1,5 @@
 "use strict";
 const userName = "max";
-let age = 30;
 const button = document.querySelector("button");
 if (button) {
     button.addEventListener("click", (event) => {
@@ -11,7 +10,7 @@ const hobbies = ["Sports", "Cooking"];
 const activeHobbies = ["Hiking"];
 activeHobbies.push(...hobbies);
 const person = {
-    name: "max",
+    firstName: "max",
     age: 30,
 };
 const copiedPerson = Object.assign({}, person);
@@ -22,3 +21,7 @@ const add = (...numbers) => {
 };
 const addedNumbers = add(5, 6, 7, 8, 9, 10, 11, 12);
 console.log(addedNumbers);
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+const { firstName, age } = person;
+console.log(firstName, age, person);

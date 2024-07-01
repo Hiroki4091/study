@@ -2,7 +2,7 @@
 const userName = "max";
 
 // 値変更可能
-let age = 30;
+// let age = 30;
 
 // アロー関数(関数を短く書くことができる)
 // 処理するコードが1つの場合中括弧は省略できる,returnも省略できる
@@ -37,7 +37,7 @@ const activeHobbies = ["Hiking"];
 activeHobbies.push(...hobbies);
 
 const person = {
-  name: "max",
+  firstName: "max",
   age: 30,
 };
 
@@ -56,3 +56,13 @@ const add = (...numbers: number[]) => {
 
 const addedNumbers = add(5, 6, 7, 8, 9, 10, 11, 12);
 console.log(addedNumbers);
+
+// 分割代入（定数、変数）
+// const hobby1 = hobbies[0];
+// const hobby2 = hobbies[1];
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+
+// 分割代入（オブジェクト）
+const { firstName, age } = person;
+console.log(firstName, age, person);
