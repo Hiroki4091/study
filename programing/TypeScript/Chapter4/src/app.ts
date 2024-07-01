@@ -11,15 +11,15 @@ let age = 30;
 // }
 
 // デフォルト値：引数の後ろにイコールで値を設定（右の引数しか設定できない or 全てに設定）
-const add = (a: number, b: number = 1) => a + b;
+// const add = (a: number, b: number = 1) => a + b;
 
 // 引数が1つの場合は引数の括弧は省略できる
 // const printOutput = (output: string | number) => console.log(output);
-const printOutput: (output: string | number) => void = (output) => {
-  console.log(output);
-};
+// const printOutput: (output: string | number) => void = (output) => {
+//   console.log(output);
+// };
 
-printOutput(add(2));
+// printOutput(add(2));
 
 const button = document.querySelector("button");
 
@@ -45,3 +45,14 @@ const person = {
 const copiedPerson = {
   ...person,
 };
+
+// レストパラメータ：任意の数の引数をつけとる際に便利
+const add = (...numbers: number[]) => {
+  // redece:全ての配列の要素に何らかの処理ができ、結果を1つにまとめる
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+const addedNumbers = add(5, 6, 7, 8, 9, 10, 11, 12);
+console.log(addedNumbers);
