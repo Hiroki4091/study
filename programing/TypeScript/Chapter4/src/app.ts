@@ -10,7 +10,8 @@ let age = 30;
 //     return a + b;
 // }
 
-const add = (a: number, b: number) => a + b;
+// デフォルト値：引数の後ろにイコールで値を設定（右の引数しか設定できない or 全てに設定）
+const add = (a: number, b: number = 1) => a + b;
 
 // 引数が1つの場合は引数の括弧は省略できる
 // const printOutput = (output: string | number) => console.log(output);
@@ -18,7 +19,7 @@ const printOutput: (output: string | number) => void = (output) => {
   console.log(output);
 };
 
-printOutput(add(2, 5));
+printOutput(add(2));
 
 const button = document.querySelector("button");
 
