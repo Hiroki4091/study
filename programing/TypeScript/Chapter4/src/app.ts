@@ -28,3 +28,20 @@ if (button) {
     console.log(event);
   });
 }
+
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Hiking"];
+
+// スプレット演算子の後ろに書かれた配列の要素を個別の値として展開
+// activeHobbies.push(hobbies[0], hobbies[1]);
+activeHobbies.push(...hobbies);
+
+const person = {
+  name: "max",
+  age: 30,
+};
+
+// オブジェクトの中身を全て追加
+const copiedPerson = {
+  ...person,
+};
