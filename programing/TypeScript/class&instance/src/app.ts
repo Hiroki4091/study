@@ -1,10 +1,11 @@
 class Department {
-  //   private id: string;
+  //   private readonly id: string;
   //   name: string;
   private employees: string[] = [];
 
   // プロパティの宣言と初期化を一度に行うことができる
-  constructor(private id: string, public name: string) {
+  // readonly: 読み取り専用
+  constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
   }
