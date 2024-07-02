@@ -1,13 +1,16 @@
 class Department {
-  name: string;
-  private employees: string[] = []; 
+  //   private id: string;
+  //   name: string;
+  private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
+  // プロパティの宣言と初期化を一度に行うことができる
+  constructor(private id: string, public name: string) {
+    // this.id = id;
+    // this.name = n;
   }
 
   discribe(this: Department) {
-    console.log("department" + this.name);
+    console.log(`department (${this.id}): ${this.name}`);
   }
   addEmployee(employee: string) {
     this.employees.push(employee);
@@ -19,10 +22,10 @@ class Department {
 }
 
 // Departmentクラスのインスタンス
-const accounting = new Department("Accounting");
+const accounting = new Department("d1", "Accounting");
 
-accounting.addEmployee(("max"));
-accounting.addEmployee(("manu"));
+accounting.addEmployee("max");
+accounting.addEmployee("manu");
 accounting.discribe();
 accounting.printEmployeeInformation();
 
