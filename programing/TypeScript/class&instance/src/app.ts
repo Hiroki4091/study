@@ -1,8 +1,15 @@
 class Department {
+
+  static fiscalYear = 2020;
   //   private readonly id: string;
   //   name: string;
   // protected 継承先でも使用できるようになる（外部からアクセスはできない）
   protected employees: string[] = [];
+
+  // staticメソッド
+  static createEmployee(name: string) {
+    return { name: name};
+  }
 
   // プロパティの宣言と初期化を一度に行うことができる
   // readonly: 読み取り専用
@@ -70,6 +77,10 @@ class AccountingDepartment extends Department {
         this.employees.push(name);
     }
 }
+
+// インスタンス化せずに直接呼ぶことができる
+const employee1 = Department.createEmployee('MAX');
+console.log(employee1, Department.fiscalYear);
 
 // Departmentクラスのインスタンス
 const it = new ITDepartment("d1", ["ito"]);

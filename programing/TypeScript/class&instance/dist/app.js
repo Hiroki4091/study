@@ -1,5 +1,8 @@
 "use strict";
 class Department {
+    static createEmployee(name) {
+        return { name: name };
+    }
     constructor(id, name) {
         this.id = id;
         this.name = name;
@@ -16,6 +19,7 @@ class Department {
         console.log(this.employees);
     }
 }
+Department.fiscalYear = 2020;
 class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, 'IT');
@@ -55,6 +59,8 @@ class AccountingDepartment extends Department {
         this.employees.push(name);
     }
 }
+const employee1 = Department.createEmployee('MAX');
+console.log(employee1, Department.fiscalYear);
 const it = new ITDepartment("d1", ["ito"]);
 const accounting = new AccountingDepartment("d2", []);
 it.addEmployee("max");
