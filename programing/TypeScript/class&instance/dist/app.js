@@ -16,9 +16,33 @@ class Department {
         console.log(this.employees);
     }
 }
-const accounting = new Department("d1", "Accounting");
-accounting.addEmployee("max");
-accounting.addEmployee("manu");
-accounting.discribe();
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+        this.admins = admins;
+    }
+}
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(this.reports);
+    }
+}
+const it = new ITDepartment("d1", ["ito"]);
+const accounting = new AccountingDepartment("d2", []);
+it.addEmployee("max");
+it.addEmployee("manu");
+it.discribe();
+it.printEmployeeInformation();
+accounting.addEmployee("first");
+accounting.addReport("second");
+accounting.printReports();
 accounting.printEmployeeInformation();
 //# sourceMappingURL=app.js.map

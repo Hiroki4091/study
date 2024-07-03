@@ -22,12 +22,40 @@ class Department {
   }
 }
 
-// Departmentクラスのインスタンス
-const accounting = new Department("d1", "Accounting");
+// Departmentを継承
+class ITDepartment extends Department {
+    constructor(id: string, private admins: string[]) {
+        // 親クラスのコンストラクタを呼び出す
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
 
-accounting.addEmployee("max");
-accounting.addEmployee("manu");
-accounting.discribe();
+class AccountingDepartment extends Department {
+    constructor(id: string, private reports: string[]) {
+        super(id, 'Accounting');
+    }
+
+    addReport(text: string) {
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+}
+
+// Departmentクラスのインスタンス
+const it = new ITDepartment("d1", ["ito"]);
+const accounting = new AccountingDepartment("d2", [])
+
+it.addEmployee("max");
+it.addEmployee("manu");
+it.discribe();
+it.printEmployeeInformation();
+accounting.addEmployee("first");
+accounting.addReport("second");
+accounting.printReports();
 accounting.printEmployeeInformation();
 
 // const accountingCopy = {
