@@ -1,4 +1,5 @@
-class Department {
+// abstract 抽象クラス（インスタンス化できない）
+abstract class Department {
 
   static fiscalYear = 2020;
   //   private readonly id: string;
@@ -13,14 +14,15 @@ class Department {
 
   // プロパティの宣言と初期化を一度に行うことができる
   // readonly: 読み取り専用
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
   }
 
-  discribe(this: Department) {
-    console.log(`department (${this.id}): ${this.name}`);
-  }
+  // サブクラスでオーバーライドすることを強制する
+  // 具体的なメソットはサブクラスで実装する
+  abstract discribe(this: Department): void; 
+  
   addEmployee(employee: string) {
     this.employees.push(employee);
   }
@@ -36,6 +38,10 @@ class ITDepartment extends Department {
         // 親クラスのコンストラクタを呼び出す
         super(id, 'IT');
         this.admins = admins;
+    }
+
+    discribe() {
+        console.log('IT部門 - ID: ' + this.id);
     }
 }
 
@@ -61,6 +67,10 @@ class AccountingDepartment extends Department {
         this.lastReport = reports[0];
     }
 
+    discribe() {
+        console.log('会計部門 - ID: ' + this.id);
+    }
+
     addReport(text: string) {
         this.reports.push(text);
         this.lastReport = text;
@@ -82,7 +92,7 @@ class AccountingDepartment extends Department {
 const employee1 = Department.createEmployee('MAX');
 console.log(employee1, Department.fiscalYear);
 
-// Departmentクラスのインスタンス
+// Departmentクラスのサブクラスのインスタンス
 const it = new ITDepartment("d1", ["ito"]);
 const accounting = new AccountingDepartment("d2", [])
 
@@ -92,6 +102,7 @@ it.discribe();
 it.printEmployeeInformation();
 accounting.addEmployee("first");
 accounting.addReport("second");
+accounting.discribe();
 
 accounting.mostRecentReport = '会計レポート';
 console.log(accounting.mostRecentReport);

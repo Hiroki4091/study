@@ -8,9 +8,6 @@ class Department {
         this.name = name;
         this.employees = [];
     }
-    discribe() {
-        console.log(`department (${this.id}): ${this.name}`);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -25,6 +22,9 @@ class ITDepartment extends Department {
         super(id, 'IT');
         this.admins = admins;
         this.admins = admins;
+    }
+    discribe() {
+        console.log('IT部門 - ID: ' + this.id);
     }
 }
 class AccountingDepartment extends Department {
@@ -44,6 +44,9 @@ class AccountingDepartment extends Department {
         super(id, 'Accounting');
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+    discribe() {
+        console.log('会計部門 - ID: ' + this.id);
     }
     addReport(text) {
         this.reports.push(text);
@@ -69,6 +72,7 @@ it.discribe();
 it.printEmployeeInformation();
 accounting.addEmployee("first");
 accounting.addReport("second");
+accounting.discribe();
 accounting.mostRecentReport = '会計レポート';
 console.log(accounting.mostRecentReport);
 accounting.printReports();
