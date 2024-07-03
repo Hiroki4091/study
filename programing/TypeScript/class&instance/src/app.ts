@@ -1,7 +1,8 @@
 class Department {
   //   private readonly id: string;
   //   name: string;
-  private employees: string[] = [];
+  // protected 継承先でも使用できるようになる（外部からアクセスはできない）
+  protected employees: string[] = [];
 
   // プロパティの宣言と初期化を一度に行うことができる
   // readonly: 読み取り専用
@@ -43,6 +44,13 @@ class AccountingDepartment extends Department {
     printReports() {
         console.log(this.reports);
     }
+
+    addEmployee(name: string) {
+        if (name === 'first') {
+            return;
+        }
+        this.employees.push(name);
+    }
 }
 
 // Departmentクラスのインスタンス
@@ -56,6 +64,9 @@ it.printEmployeeInformation();
 accounting.addEmployee("first");
 accounting.addReport("second");
 accounting.printReports();
+
+accounting.addEmployee('first');
+accounting.addEmployee('second');
 accounting.printEmployeeInformation();
 
 // const accountingCopy = {
