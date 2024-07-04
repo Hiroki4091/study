@@ -1,8 +1,24 @@
+// type AddFn = (a: number, b: number) => number;
+interface AddFn {
+    // 匿名メソッド
+    (a: number, b: number): number;
+}
+
+let add: AddFn;
+
+add = (a: number, b: number) => {
+    return a + b;
+}
+
 // 初期値を設定することはできない
 // 型として使用できる
-interface Greetable {
-    name: string;
+interface Named {
+    // readonlyを利用できる
+    readonly name: string;
+}
 
+// Namedを継承している
+interface Greetable extends Named {
     greet(pharase: string): void;
 }
 
