@@ -12,6 +12,16 @@ npm install typescript
 tsc ファイル名
 ```
 
+## TypeScriptコンパイラを自動生成する
+```bash
+npx tsc --init
+```
+
+## lite-serverのパッケージをインストール
+```bash
+npm install lite-server --save-dev
+```
+
 ## 特長
 
 - Javascriptを簡単にコードを書けるようになったもの
@@ -114,3 +124,9 @@ tsc --init
 
 ## モダンなJavaScriptの機能
 - [機能について](https://typescript-jp.gitbook.io/deep-dive/future-javascript)
+
+## クラスについて
+- [クラス](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes)
+
+## インスタンスについて
+- [TypeScriptのインスタンス](https://typescript-jp.gitbook.io/deep-dive/type-system/interfaces)
