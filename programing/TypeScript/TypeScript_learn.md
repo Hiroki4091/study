@@ -124,3 +124,9 @@ tsc --init
 
 ## モダンなJavaScriptの機能
 - [機能について](https://typescript-jp.gitbook.io/deep-dive/future-javascript)
+
+## クラスについて
+- [クラス](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes)
+
+## インスタンスについて
+- [TypeScriptのインスタンス](https://typescript-jp.gitbook.io/deep-dive/type-system/interfaces)
