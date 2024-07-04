@@ -130,3 +130,6 @@ tsc --init
 
 ## インスタンスについて
 - [TypeScriptのインスタンス](https://typescript-jp.gitbook.io/deep-dive/type-system/interfaces)
+
+## 高度な型
+- [高度なタイプ](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
