@@ -55,4 +55,8 @@ function moveAnimal(animal) {
     console.log("移動速度: " + speed);
 }
 moveAnimal({ type: "horse", runningSpeed: 10 });
+const userInputElement = document.getElementById("user-input");
+if (userInputElement) {
+    userInputElement.value = 'コメント';
+}
 //# sourceMappingURL=app.js.map

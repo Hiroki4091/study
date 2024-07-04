@@ -101,3 +101,17 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: "horse", runningSpeed: 10 });
+
+// 2つの方法がある（プロジェクトと通して同じ方法を使う）
+// 型キャスト<>の中に型をいれる
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+// asの後ろに型を入れる
+const userInputElement = document.getElementById(
+  "user-input"
+);
+
+if (userInputElement) {
+    (userInputElement as HTMLInputElement).value = 'コメント';
+    
+}
+
