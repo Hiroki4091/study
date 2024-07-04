@@ -50,10 +50,17 @@ const fetchedUserData = {
   },
 };
 
-// fetchedUserData.jobがundifinedだったら後ろの式fetchedUserData.job.titleは実行されない
+// fetchedUserData.jobがundefinedだったら後ろの式fetchedUserData.job.titleは実行されない
 // console.log(fetchedUserData.job && fetchedUserData.job.title);
-// ?がundifinedの場合、その後ろはアクセスしない(実行時エラーが起きない)
+// ?がundefinedの場合、その後ろはアクセスしない(実行時エラーが起きない)
 console.log(fetchedUserData?.job?.title);
+
+const userInput = undefined;
+
+// NULL合体演算子：もしuserInputがnullかundefinedのどちらかの場合'DEFAULT'を利用する
+const storedData = userInput ?? 'DEFAULT';
+
+console.log(storedData);
 
 // type UnknownEmployee = Employee | Admin;
 
