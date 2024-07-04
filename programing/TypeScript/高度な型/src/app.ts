@@ -23,6 +23,13 @@ type Numeric = number | boolean;
 // CombinableとNumericで共通の型がnumberなのでUniversalはnumber型
 type Universal = Combinable & Numeric;
 
+// 関数オーバーロード:関数のプロパティが何を受け取ったら何を返すのか明記できる
+// 引数が両方ともstringの時stringで返す
+function add(a: string, b: string): string;
+// 引数が両方ともnumberの時numberで返す
+function add(a: number, b: number): number;
+function add(a: string, b: number): string;
+function add(a: number, b: string): string;
 function add(a: Combinable, b: Combinable) {
   // このif文がtypeガード（複数の型に応じて処理を切り替える）
   if (typeof a === "string" || typeof b === "string") {
@@ -31,94 +38,97 @@ function add(a: Combinable, b: Combinable) {
   return a + b;
 }
 
-type UnknownEmployee = Employee | Admin;
+const result = add(1, "hello");
+result.split(" ");
 
-function printEmployeeInformation(emp: UnknownEmployee) {
-  console.log(emp.name);
-  if ("privileges" in emp) {
-    console.log("Privileges: " + emp.privileges);
-  }
-  if ("startDate" in emp) {
-    console.log("Start Date; " + emp.startDate);
-  }
-}
+// type UnknownEmployee = Employee | Admin;
 
-printEmployeeInformation({ name: "Manu", startDate: new Date() });
+// function printEmployeeInformation(emp: UnknownEmployee) {
+//   console.log(emp.name);
+//   if ("privileges" in emp) {
+//     console.log("Privileges: " + emp.privileges);
+//   }
+//   if ("startDate" in emp) {
+//     console.log("Start Date; " + emp.startDate);
+//   }
+// }
 
-class Car {
-  drive() {
-    console.log("運転中...");
-  }
-}
+// printEmployeeInformation({ name: "Manu", startDate: new Date() });
 
-class Truck {
-  drive() {
-    console.log("運転中...");
-  }
-  loadCargo(amount: number) {
-    console.log("荷物を載せています..." + amount);
-  }
-}
+// class Car {
+//   drive() {
+//     console.log("運転中...");
+//   }
+// }
 
-type Vehicle = Car | Truck;
+// class Truck {
+//   drive() {
+//     console.log("運転中...");
+//   }
+//   loadCargo(amount: number) {
+//     console.log("荷物を載せています..." + amount);
+//   }
+// }
 
-const v1 = new Car();
-const v2 = new Truck();
+// type Vehicle = Car | Truck;
 
-function useVehicle(vehicle: Vehicle) {
-  vehicle.drive();
-  if (vehicle instanceof Truck) {
-    vehicle.loadCargo(1000);
-  }
-}
+// const v1 = new Car();
+// const v2 = new Truck();
 
-useVehicle(v1);
-useVehicle(v2);
+// function useVehicle(vehicle: Vehicle) {
+//   vehicle.drive();
+//   if (vehicle instanceof Truck) {
+//     vehicle.loadCargo(1000);
+//   }
+// }
 
-interface Bird {
-  type: "bird";
-  flyingSpeed: number;
-}
+// useVehicle(v1);
+// useVehicle(v2);
 
-interface Horse {
-  type: "horse";
-  runningSpeed: number;
-}
+// interface Bird {
+//   type: "bird";
+//   flyingSpeed: number;
+// }
 
-type Animal = Bird | Horse;
+// interface Horse {
+//   type: "horse";
+//   runningSpeed: number;
+// }
 
-function moveAnimal(animal: Animal) {
-  let speed;
-  // 共通のプロパティが必要
-  switch (animal.type) {
-    case "bird":
-      speed = animal.flyingSpeed;
-      break;
-    case "horse":
-      speed = animal.runningSpeed;
-  }
-  console.log("移動速度: " + speed);
-}
+// type Animal = Bird | Horse;
 
-moveAnimal({ type: "horse", runningSpeed: 10 });
+// function moveAnimal(animal: Animal) {
+//   let speed;
+//   // 共通のプロパティが必要
+//   switch (animal.type) {
+//     case "bird":
+//       speed = animal.flyingSpeed;
+//       break;
+//     case "horse":
+//       speed = animal.runningSpeed;
+//   }
+//   console.log("移動速度: " + speed);
+// }
 
-// 2つの方法がある（プロジェクトと通して同じ方法を使う）
-// 型キャスト<>の中に型をいれる
-// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
-// asの後ろに型を入れる
-const userInputElement = document.getElementById("user-input");
+// moveAnimal({ type: "horse", runningSpeed: 10 });
 
-if (userInputElement) {
-  (userInputElement as HTMLInputElement).value = "コメント";
-}
+// // 2つの方法がある（プロジェクトと通して同じ方法を使う）
+// // 型キャスト<>の中に型をいれる
+// // const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+// // asの後ろに型を入れる
+// const userInputElement = document.getElementById("user-input");
 
-interface ErrorContainer {
-  // { email : '正しいメールアドレスではありません', username: 'ユーザー名に記号を含めることはできません' }
-  // indexがあると他の型のプロパティを格納できない
-  [key: string]: string;
-}
+// if (userInputElement) {
+//   (userInputElement as HTMLInputElement).value = "コメント";
+// }
 
-const errorBag: ErrorContainer = {
-    email: '正しいメールアドレスではありません',
-    username: 'ユーザー名に記号を含めることはできません',
-}
+// interface ErrorContainer {
+//   // { email : '正しいメールアドレスではありません', username: 'ユーザー名に記号を含めることはできません' }
+//   // indexがあると他の型のプロパティを格納できない
+//   [key: string]: string;
+// }
+
+// const errorBag: ErrorContainer = {
+//   email: "正しいメールアドレスではありません",
+//   username: "ユーザー名に記号を含めることはできません",
+// };
