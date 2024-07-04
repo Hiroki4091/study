@@ -14,7 +14,9 @@ add = (a: number, b: number) => {
 // 型として使用できる
 interface Named {
     // readonlyを利用できる
-    readonly name: string;
+    readonly name?: string;
+    // オプショナルなプロパティ
+    outputName?: string;
 }
 
 // Namedを継承している
@@ -24,22 +26,29 @@ interface Greetable extends Named {
 
 // インターフェイスを実装
 class Person implements Greetable {
-    name: string;
+    name?: string;
     age: number = 0;
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(n?: string) {
+        if (n) {
+            this.name = n;
+        }
     }
 
     greet(pharase: string) {
-        console.log(pharase + ' ' + this.name);
+        if (this.name) {
+            console.log(pharase + ' ' + this.name);
+        } else {
+            console.log("Hi!");
+        }
     }
 }
 
 // インターフェースを型として指定できる
 let user1: Greetable;
 
-user1 = new Person('max');
+// nameが任意のパラメータなので引数がなくてもいい
+user1 = new Person();
 
 user1.greet('Hello I am')
 

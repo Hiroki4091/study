@@ -6,14 +6,21 @@ add = (a, b) => {
 class Person {
     constructor(n) {
         this.age = 0;
-        this.name = n;
+        if (n) {
+            this.name = n;
+        }
     }
     greet(pharase) {
-        console.log(pharase + ' ' + this.name);
+        if (this.name) {
+            console.log(pharase + ' ' + this.name);
+        }
+        else {
+            console.log("Hi!");
+        }
     }
 }
 let user1;
-user1 = new Person('max');
+user1 = new Person();
 user1.greet('Hello I am');
 console.log(user1);
 //# sourceMappingURL=app.js.map
