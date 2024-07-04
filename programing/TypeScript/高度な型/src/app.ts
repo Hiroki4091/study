@@ -106,12 +106,19 @@ moveAnimal({ type: "horse", runningSpeed: 10 });
 // 型キャスト<>の中に型をいれる
 // const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
 // asの後ろに型を入れる
-const userInputElement = document.getElementById(
-  "user-input"
-);
+const userInputElement = document.getElementById("user-input");
 
 if (userInputElement) {
-    (userInputElement as HTMLInputElement).value = 'コメント';
-    
+  (userInputElement as HTMLInputElement).value = "コメント";
 }
 
+interface ErrorContainer {
+  // { email : '正しいメールアドレスではありません', username: 'ユーザー名に記号を含めることはできません' }
+  // indexがあると他の型のプロパティを格納できない
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+    email: '正しいメールアドレスではありません',
+    username: 'ユーザー名に記号を含めることはできません',
+}

@@ -57,6 +57,10 @@ function moveAnimal(animal) {
 moveAnimal({ type: "horse", runningSpeed: 10 });
 const userInputElement = document.getElementById("user-input");
 if (userInputElement) {
-    userInputElement.value = 'コメント';
+    userInputElement.value = "コメント";
 }
+const errorBag = {
+    email: '正しいメールアドレスではありません',
+    username: 'ユーザー名に記号を含めることはできません',
+};
 //# sourceMappingURL=app.js.map
