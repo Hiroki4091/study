@@ -13,3 +13,11 @@
 //     data.split(' ');
 // })
 
+// 異なるオブジェクト型を返すことを指定
+function merge<T, U>(objA: T, objB: U) {
+  return <T & U>Object.assign({}, objA, objB);
+}
+
+// TとUのオブジェクトを指定することができるが型推論してくれるので明示的に書かなくていい
+const mergedObj = merge({ name: "max" , hobbies: ['sports']}, { age: 30 });
+console.log(mergedObj.age);
