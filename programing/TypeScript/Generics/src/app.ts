@@ -45,3 +45,39 @@ function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) 
 }
 
 console.log(extractAndConvert({name : 'max'}, 'name'));
+
+// ジェネリッククラス
+// object型が使えないようにする
+class DataStorage<T extends string | number | boolean> {
+    private data: T[] = [];
+
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    removeItem(item: T) {
+        if (this.data.indexOf(item) === -1) {
+            return;
+        } 
+        // 値が見つからない場合は-1(配列の最後の要素)
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+
+    getItems() {
+        return [...this.data];
+    }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('data1');
+textStorage.addItem('data2');
+textStorage.removeItem('data1');
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+// const obj = {name: 'max'};
+// objStorage.addItem(obj);
+// objStorage.removeItem(obj);
+// console.log(objStorage.getItems());
