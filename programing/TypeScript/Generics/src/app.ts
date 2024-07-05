@@ -22,3 +22,18 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 // TとUのオブジェクトを指定することができるが型推論してくれるので明示的に書かなくていい
 const mergedObj = merge({ name: "max" , hobbies: ['sports']}, { age: 30 });
 console.log(mergedObj);
+
+interface Lengthy {
+    length: number;
+}
+
+// elementの引数に曖昧さ（柔軟に）を残している
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = '値がありません';
+    if (element.length > 0) {
+        descriptionText = '値は' + element.length + '個です。';
+    }
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Sports', 'baseball']));
