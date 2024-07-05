@@ -12,4 +12,8 @@ function countAndDescribe(element) {
     return [element, descriptionText];
 }
 console.log(countAndDescribe(['Sports', 'baseball']));
+function extractAndConvert(obj, key) {
+    return 'Value: ' + obj[key];
+}
+console.log(extractAndConvert({ name: 'max' }, 'name'));
 //# sourceMappingURL=app.js.map
