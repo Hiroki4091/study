@@ -14,10 +14,11 @@
 // })
 
 // 異なるオブジェクト型を返すことを指定
-function merge<T, U>(objA: T, objB: U) {
+// 型に制約をつけることができる T, Uはextendsの型でなければならない
+function merge<T extends object, U extends object>(objA: T, objB: U) {
   return <T & U>Object.assign({}, objA, objB);
 }
 
 // TとUのオブジェクトを指定することができるが型推論してくれるので明示的に書かなくていい
 const mergedObj = merge({ name: "max" , hobbies: ['sports']}, { age: 30 });
-console.log(mergedObj.age);
+console.log(mergedObj);
