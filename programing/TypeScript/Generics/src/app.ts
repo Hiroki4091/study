@@ -81,3 +81,23 @@ const numberStorage = new DataStorage<number>();
 // objStorage.addItem(obj);
 // objStorage.removeItem(obj);
 // console.log(objStorage.getItems());
+
+interface CourceGorl {
+    title: string;
+    description: string;
+    completeUntil: Date;
+}
+
+function createCourceGorl(title: string, description: string, date: Date) : CourceGorl {
+    // Partial: 既存の型の全てのプロパティをオプショナル（任意）にする便利なユーティリティ型
+    let courceGorl: Partial<CourceGorl> = {};
+    courceGorl.title = title;
+    courceGorl.description = description;
+    courceGorl.completeUntil = date;
+    return courceGorl as CourceGorl;
+}
+
+const names : Readonly<string[]> = ['Max', 'Anna'];
+// readonly型: 読み取り専用なので値を追加、変更ができない
+// names.push('Manu');
+// names.pop();

@@ -133,3 +133,6 @@ tsc --init
 
 ## 高度な型
 - [高度なタイプ](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
+
+## Generic型のユーティリティ
+- [ユーティリティタイプ](https://www.typescriptlang.org/docs/handbook/utility-types.html)

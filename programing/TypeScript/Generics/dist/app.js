@@ -39,4 +39,12 @@ textStorage.addItem('data2');
 textStorage.removeItem('data1');
 console.log(textStorage.getItems());
 const numberStorage = new DataStorage();
+function createCourceGorl(title, description, date) {
+    let courceGorl = {};
+    courceGorl.title = title;
+    courceGorl.description = description;
+    courceGorl.completeUntil = date;
+    return courceGorl;
+}
+const names = ['Max', 'Anna'];
 //# sourceMappingURL=app.js.map
