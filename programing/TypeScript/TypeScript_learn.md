@@ -134,5 +134,6 @@ tsc --init
 ## 高度な型
 - [高度なタイプ](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
-## Generic型のユーティリティ
+## Generic
 - [ユーティリティタイプ](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [Generic型](https://typescript-jp.gitbook.io/deep-dive/type-system/generics)
