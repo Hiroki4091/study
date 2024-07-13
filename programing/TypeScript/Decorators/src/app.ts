@@ -1,10 +1,13 @@
-function Logger(constructor: Function) {
-  console.log("ログ出力中...");
-  console.log(constructor);
+function Logger(logString: string) {
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
 }
 
 // デコレータはクラスが定義されたときに実行される
-@Logger
+// デコレータファクトリを使用することで、デコレータの内部で行うことをカスタマイズすることができる
+@Logger("ログ出力中 - Person")
 class Person {
   name = "John";
 
