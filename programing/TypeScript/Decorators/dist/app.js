@@ -11,6 +11,16 @@ function Logger(logString) {
         console.log(constructor);
     };
 }
+function WithTemplete(template, hookId) {
+    return function (constructor) {
+        const hookEl = document.getElementById(hookId);
+        const p = new constructor();
+        if (hookEl) {
+            hookEl.innerHTML = template;
+            hookEl.querySelector('h1').textContent = p.name;
+        }
+    };
+}
 let Person = class Person {
     constructor() {
         this.name = "John";
@@ -18,7 +28,7 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    Logger("ログ出力中 - Person")
+    WithTemplete("<h1>Personオブジェクト</h1>", "app")
 ], Person);
 const pers = new Person();
 console.log(pers);
