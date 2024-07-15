@@ -8,15 +8,22 @@ function Logger(logString: string) {
 
 function WithTemplete(template: string, hookId: string) {
   console.log("TEMPLATE ファクトリ");
-  // _ : 引数は受け取るが、必要がないということを伝える
-  return function (constructor: any) {
-    console.log("テンプレートを表示");
-    const hookEl = document.getElementById(hookId);
-    const p = new constructor();
-    if (hookEl) {
-      hookEl.innerHTML = template;
-      hookEl.querySelector("h1")!.textContent = p.name;
-    }
+  // new : これはオブジェクトだが、new関数を使ってインスタンスを作れるもの（コンストラクタ関数）
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    // originalConstructorを継承している
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        console.log("テンプレートを表示");
+        const hookEl = document.getElementById(hookId);
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
   };
 }
 

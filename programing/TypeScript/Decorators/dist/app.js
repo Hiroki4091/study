@@ -17,14 +17,18 @@ function Logger(logString) {
 }
 function WithTemplete(template, hookId) {
     console.log("TEMPLATE ファクトリ");
-    return function (constructor) {
-        console.log("テンプレートを表示");
-        const hookEl = document.getElementById(hookId);
-        const p = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector("h1").textContent = p.name;
-        }
+    return function (originalConstructor) {
+        return class extends originalConstructor {
+            constructor(..._) {
+                super();
+                console.log("テンプレートを表示");
+                const hookEl = document.getElementById(hookId);
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    hookEl.querySelector("h1").textContent = this.name;
+                }
+            }
+        };
     };
 }
 let Person = class Person {
