@@ -62,6 +62,7 @@ function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
 }
 
 // メソッドのパラメータ
+// メソッドデコレータで値を返す
 function Log3(
   target: any,
   name: string | Symbol,
@@ -104,3 +105,35 @@ class Product {
     return this._price * (1 + tax);
   }
 }
+
+function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor: PropertyDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            // オブジェクトが元々存在するオブジェクトを参照するようにする
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    }
+    return adjDescriptor;
+}
+
+const p1 = new Product("Book1", 100);
+const p2 = new Product("Book2", 200);
+
+class Printer {
+  message = "クリックしました！";
+
+  @Autobind
+  showMessage() {
+    console.log(this.message);
+  }
+}
+
+const p = new Printer();
+
+// ボタンの要素を取得
+const button = document.querySelector("button")!;
+button.addEventListener('click', p.showMessage);
