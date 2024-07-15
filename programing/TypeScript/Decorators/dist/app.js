@@ -6,18 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 function Logger(logString) {
+    console.log("LOGGER ファクトリ");
     return function (constructor) {
         console.log(logString);
         console.log(constructor);
     };
 }
 function WithTemplete(template, hookId) {
+    console.log("TEMPLATE ファクトリ");
     return function (constructor) {
+        console.log("テンプレートを表示");
         const hookEl = document.getElementById(hookId);
         const p = new constructor();
         if (hookEl) {
             hookEl.innerHTML = template;
-            hookEl.querySelector('h1').textContent = p.name;
+            hookEl.querySelector("h1").textContent = p.name;
         }
     };
 }
@@ -28,6 +31,7 @@ let Person = class Person {
     }
 };
 Person = __decorate([
+    Logger("ログ出力中 - Person"),
     WithTemplete("<h1>Personオブジェクト</h1>", "app")
 ], Person);
 const pers = new Person();
