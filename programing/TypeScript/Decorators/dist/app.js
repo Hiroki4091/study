@@ -122,10 +122,18 @@ const button = document.querySelector("button");
 button.addEventListener("click", p.showMessage);
 const registeredValidators = {};
 function Required(target, propertyName) {
-    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: ["required"] });
+    var _a, _b;
+    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: [
+            ...((_b = (_a = registeredValidators[target.constructor.name]) === null || _a === void 0 ? void 0 : _a[propertyName]) !== null && _b !== void 0 ? _b : []),
+            "required",
+        ] });
 }
 function PositiveNumber(target, propertyName) {
-    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: ["positive"] });
+    var _a, _b;
+    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: [
+            ...((_b = (_a = registeredValidators[target.constructor.name]) === null || _a === void 0 ? void 0 : _a[propertyName]) !== null && _b !== void 0 ? _b : []),
+            "positive",
+        ] });
 }
 function validate(obj) {
     const objValidatorConfig = registeredValidators[obj.constructor.name];
