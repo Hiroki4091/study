@@ -100,7 +100,7 @@ function Autobind(_, _2, descriptor) {
         get() {
             const boundFn = originalMethod.bind(this);
             return boundFn;
-        }
+        },
     };
     return adjDescriptor;
 }
@@ -119,5 +119,58 @@ __decorate([
 ], Printer.prototype, "showMessage", null);
 const p = new Printer();
 const button = document.querySelector("button");
-button.addEventListener('click', p.showMessage);
+button.addEventListener("click", p.showMessage);
+const registeredValidators = {};
+function Required(target, propertyName) {
+    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: ["required"] });
+}
+function PositiveNumber(target, propertyName) {
+    registeredValidators[target.constructor.name] = Object.assign(Object.assign({}, registeredValidators[target.constructor.name]), { [propertyName]: ["positive"] });
+}
+function validate(obj) {
+    const objValidatorConfig = registeredValidators[obj.constructor.name];
+    if (!objValidatorConfig) {
+        return true;
+    }
+    let isValid = true;
+    for (const property in objValidatorConfig) {
+        for (const validator of objValidatorConfig[property]) {
+            switch (validator) {
+                case "required":
+                    isValid = isValid && !!obj[property];
+                    break;
+                case "positive":
+                    isValid = isValid && obj[property] > 0;
+                    break;
+            }
+        }
+    }
+    return isValid;
+}
+class Course {
+    constructor(t, p) {
+        this.title = t;
+        this.price = p;
+    }
+}
+__decorate([
+    Required
+], Course.prototype, "title", void 0);
+__decorate([
+    PositiveNumber
+], Course.prototype, "price", void 0);
+const courseForm = document.querySelector("form");
+courseForm.addEventListener("submit", (evnet) => {
+    event === null || event === void 0 ? void 0 : event.preventDefault();
+    const titleEl = document.getElementById("title");
+    const priceEl = document.getElementById("price");
+    const title = titleEl.value;
+    const price = +priceEl.value;
+    const createdCourse = new Course(title, price);
+    if (!validate(createdCourse)) {
+        alert("正しく入力してください！");
+        return;
+    }
+    console.log(createdCourse);
+});
 //# sourceMappingURL=app.js.map
