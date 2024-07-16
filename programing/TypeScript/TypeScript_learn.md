@@ -137,3 +137,6 @@ tsc --init
 ## Generic
 - [ユーティリティタイプ](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 - [Generic型](https://typescript-jp.gitbook.io/deep-dive/type-system/generics)
+
+## デコレータ
+- [デコレータ](https://www.typescriptlang.org/docs/handbook/decorators.html)
