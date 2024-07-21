@@ -12,6 +12,8 @@ class ProjectInput {
     // importNode(, true)のtrueはdeep cloneするかどうかの引数（contentの中の階層も含めてインポートするかどうか）
     const importedNode = document.importNode(this.templateElement.content, true);
     this.element = importedNode.firstElementChild as HTMLFormElement;
+    // app.cssのidを指定することで装飾を適応する
+    this.element.id = "user-input";
     this.attach();
   }
 
