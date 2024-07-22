@@ -68,6 +68,12 @@ class ProjectInput {
     }
   }
 
+  private clearInputs() {
+    this.titleInputElement.value = "";
+    this.descriptionInputElement.value = "";
+    this.mandayInputElement.value = "";
+  }
+
   // イベントのオブジェクトを受け取る
   @Autobind
   private submitHandler(event: Event) {
@@ -77,6 +83,7 @@ class ProjectInput {
     if (Array.isArray(userInput)) {
       const [title, desc, manday] = userInput;
       console.log(title, desc, manday);
+      this.clearInputs();
     }
   }
 

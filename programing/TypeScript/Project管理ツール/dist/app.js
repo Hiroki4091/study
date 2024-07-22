@@ -43,12 +43,18 @@ class ProjectInput {
             return [enteredTitle, enteredDescription, +enteredManday];
         }
     }
+    clearInputs() {
+        this.titleInputElement.value = "";
+        this.descriptionInputElement.value = "";
+        this.mandayInputElement.value = "";
+    }
     submitHandler(event) {
         event.preventDefault();
         const userInput = this.gatherUserInput();
         if (Array.isArray(userInput)) {
             const [title, desc, manday] = userInput;
             console.log(title, desc, manday);
+            this.clearInputs();
         }
     }
     configure() {
