@@ -1,9 +1,5 @@
 // autobind decorator
-function Autobind(
-  _: any,
-  _2: string,
-  descriptor: PropertyDescriptor
-) {
+function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   const adjDescriptor: PropertyDescriptor = {
     configurable: true,
@@ -55,11 +51,33 @@ class ProjectInput {
     this.attach();
   }
 
+  private gatherUserInput(): [string, string, number] | void {
+    const enteredTitle = this.titleInputElement.value;
+    const enteredDescription = this.descriptionInputElement.value;
+    const enteredManday = this.mandayInputElement.value;
+    // 空白ではない時
+    if (
+      enteredTitle.trim().length === 0 ||
+      enteredDescription.trim().length === 0 ||
+      enteredManday.trim().length === 0
+    ) {
+      alert("入力値が正しくありません。再度お試しください");
+      return;
+    } else {
+      return [enteredTitle, enteredDescription, +enteredManday];
+    }
+  }
+
   // イベントのオブジェクトを受け取る
   @Autobind
   private submitHandler(event: Event) {
     event.preventDefault();
-    console.log(this.titleInputElement.value);
+    const userInput = this.gatherUserInput();
+    // Array.isArray : 引数が配列かどうかをチェックする
+    if (Array.isArray(userInput)) {
+      const [title, desc, manday] = userInput;
+      console.log(title, desc, manday);
+    }
   }
 
   // イベントリスナーの設定
