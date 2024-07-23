@@ -1,3 +1,40 @@
+// Project State Management
+class ProjectState {
+  private listenbers: any[] = [];
+  private projects: any[] = [];
+  private static instance: ProjectState;
+
+  private constructor() {}
+
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new ProjectState();
+    return this.instance;
+  }
+
+  addListener(listenerFn: Function) {
+    this.listenbers.push(listenerFn);
+  }
+
+  addProject(title: string, description: string, manday: number) {
+    const newProject = {
+      id: Math.random().toString(),
+      title: title,
+      description: description,
+      manday: manday,
+    };
+    this.projects.push(newProject);
+    for (const listenerFn of this.listenbers) {
+      // プロジェクトのリストを管理ためのものなのでプロジェクトのリストコピーして返す  slice() : コピー
+      listenerFn(this.projects.slice());
+    }
+  }
+}
+
+const projectState = ProjectState.getInstance();
+
 // Validation
 interface Validatable {
   value: string | number;
@@ -66,12 +103,14 @@ class ProjectList {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLDivElement;
   element: HTMLElement;
+  assignedProjects: any[];
 
   constructor(private type: "active" | "finished") {
     this.templateElement = document.getElementById(
       "project-list"
     )! as HTMLTemplateElement;
     this.hostElement = document.getElementById("app")! as HTMLDivElement;
+    this.assignedProjects = [];
 
     // .content: templateタグの内側のタグを参照する
     // importNode(, true)のtrueはdeep cloneするかどうかの引数（contentの中の階層も含めてインポートするかどうか）
@@ -82,9 +121,27 @@ class ProjectList {
     this.element = importedNode.firstElementChild as HTMLElement;
     // app.cssのidを指定することで装飾を適応する
     this.element.id = `${this.type}-projects`;
+
+    projectState.addListener((projects: any[]) => {
+      this.assignedProjects = projects;
+      this.renderProjects();
+    });
+
     this.attach();
     this.renderContent();
   }
+
+  private renderProjects() {
+    const listEl = document.getElementById(
+      `${this.type}-projects-list`
+    )! as HTMLUListElement;
+    for (const prjItem of this.assignedProjects) {
+      const listItem = document.createElement("li");
+      listItem.textContent = prjItem.title;
+      listEl.appendChild(listItem);
+    }
+  }
+
   // idを設定、h2タグの文字列を設定
   private renderContent() {
     const listId = `${this.type}-projects-list`;
@@ -189,7 +246,8 @@ class ProjectInput {
     // Array.isArray : 引数が配列かどうかをチェックする
     if (Array.isArray(userInput)) {
       const [title, desc, manday] = userInput;
-      console.log(title, desc, manday);
+      // プロジェクトを追加できるようにする
+      projectState.addProject(title, desc, manday);
       this.clearInputs();
     }
   }
