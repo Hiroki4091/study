@@ -67,6 +67,20 @@ class ProjectState extends State<Project> {
       ProjectStatus.Active
     );
     this.projects.push(newProject);
+    this.updateListeners();
+  }
+
+  // ドラッグ＆ドロップで今入っているリストから他のリストへ移動するメソッド
+  moveProject(projectId: string, newStatus: ProjectStatus) {
+    const project = this.projects.find(prj => prj.id === projectId);
+    // project.status !== newStatus ステータスが本当に切り替わった時だけプロジェクトのステータスを更新してupdateListener()を呼び出す
+    if (project && project.status !== newStatus) {
+      project.status = newStatus;
+      this.updateListeners();
+    }
+  }
+
+  private updateListeners() {
     for (const listenerFn of this.listeners) {
       // プロジェクトのリストを管理ためのものなのでプロジェクトのリストコピーして返す  slice() : コピー
       listenerFn(this.projects.slice());
@@ -260,8 +274,11 @@ class ProjectList
     }
   }
 
+  @Autobind
   dropHandler(event: DragEvent) {
-    console.log(event.dataTransfer!.getData("text/plain"));
+    // projectのidを取得する
+    const prjId = event.dataTransfer!.getData("text/plain");
+    projectState.moveProject(prjId, this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished);
   }
 
   // ドラッグ中に要素を離れた時に呼び出されるイベント
