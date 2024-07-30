@@ -140,3 +140,6 @@ tsc --init
 
 ## デコレータ
 - [デコレータ](https://www.typescriptlang.org/docs/handbook/decorators.html)
+
+## ドラッグ＆ドロップ
+- [ドラッグ＆ドロップAPI](https://developer.mozilla.org/ja/docs/Web/API/HTML_Drag_and_Drop_API)
