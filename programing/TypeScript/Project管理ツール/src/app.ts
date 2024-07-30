@@ -1,3 +1,18 @@
+// Drag & Drop
+interface Draggable {
+  dragStartHandler(event: DragEvent): void;
+  dragEndHandler(event: DragEvent): void;
+}
+
+interface DragTarget {
+  // 有効なドロップ対象かどうかをブラウザに伝えるためのEventHandler(特定の処理をしなければドロップできない)
+  dragOverHandler(event: DragEvent): void;
+  // ここでデータの更新や画面の更新を行う[実際にドロップが起きた時に呼ばれるEventHandler(dragOverHandlerがドロップを許可したら最終的に呼ばれる)]
+  dragHandler(event: DragEvent): void;
+  // ビジュアル上のフィードバックを行う時に便利なEventHandler(ユーザーが何かをドラッグした時に背景色を変えたりする、キャンセルされた場合などに表示を元に戻すことができる)
+  dragLeaveHandler(event: DragEvent): void;
+}
+
 // Project Type
 enum ProjectStatus {
   Active,
@@ -171,7 +186,10 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
 }
 
 // ProjectItem Class
-class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
+class ProjectItem
+  extends Component<HTMLUListElement, HTMLLIElement>
+  implements Draggable
+{
   private project: Project;
 
   // mandayを取得するGetter関数を設定
@@ -190,7 +208,20 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
     this.renderContent();
   }
 
-  configure() {}
+  @Autobind
+  dragStartHandler(event: DragEvent) {
+    console.log(event);
+  }
+
+  dragEndHandler(_: DragEvent) {
+    console.log("Drag終了");
+  }
+
+  configure() {
+    // addEventListener: 特定のイベントが発生した時に指定された関数を呼び出すためのメソッド
+    this.element.addEventListener("dragstart", this.dragStartHandler);
+    this.element.addEventListener("dragend", this.dragEndHandler);
+  }
 
   renderContent() {
     this.element.querySelector("h2")!.textContent = this.project.title;
