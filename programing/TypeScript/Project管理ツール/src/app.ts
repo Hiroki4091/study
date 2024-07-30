@@ -8,7 +8,7 @@ interface DragTarget {
   // 有効なドロップ対象かどうかをブラウザに伝えるためのEventHandler(特定の処理をしなければドロップできない)
   dragOverHandler(event: DragEvent): void;
   // ここでデータの更新や画面の更新を行う[実際にドロップが起きた時に呼ばれるEventHandler(dragOverHandlerがドロップを許可したら最終的に呼ばれる)]
-  dragHandler(event: DragEvent): void;
+  dropHandler(event: DragEvent): void;
   // ビジュアル上のフィードバックを行う時に便利なEventHandler(ユーザーが何かをドラッグした時に背景色を変えたりする、キャンセルされた場合などに表示を元に戻すことができる)
   dragLeaveHandler(event: DragEvent): void;
 }
@@ -231,7 +231,10 @@ class ProjectItem
 }
 
 // ProjectList class
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList
+  extends Component<HTMLDivElement, HTMLElement>
+  implements DragTarget
+{
   assignedProjects: Project[];
 
   constructor(private type: "active" | "finished") {
@@ -243,8 +246,27 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
     this.renderContent();
   }
 
+  @Autobind
+  dragOverHandler(_: DragEvent) {
+    const listEl = this.element.querySelector("ul")!;
+    listEl.classList.add("droppable");
+  }
+
+  dropHandler(_: DragEvent) {}
+
+  // ドラッグ中に要素を離れた時に呼び出されるイベント
+  @Autobind
+  dragLeaveHandler(_: DragEvent) {
+    const listEl = this.element.querySelector("ul")!;
+    listEl.classList.remove("droppable");
+  }
+
   // publicメソッドは一般的にprivateメソッドの上に定義する
   configure() {
+    this.element.addEventListener("dragover", this.dragOverHandler);
+    this.element.addEventListener("drop", this.dropHandler);
+    this.element.addEventListener("dragleave", this.dragLeaveHandler);
+
     projectState.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((prj) => {
         if (this.type === "active") {
