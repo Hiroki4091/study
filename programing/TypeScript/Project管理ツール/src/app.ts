@@ -210,7 +210,10 @@ class ProjectItem
 
   @Autobind
   dragStartHandler(event: DragEvent) {
-    console.log(event);
+    // データを設定することができる(DragEventでデータを転送するためのプロパティ)
+    event.dataTransfer!.setData("text/plain", this.project.id);
+    // ブラウザ上でカーソルがどのように表示されるかをコントロールする
+    event.dataTransfer!.effectAllowed = "move";
   }
 
   dragEndHandler(_: DragEvent) {
@@ -247,12 +250,19 @@ class ProjectList
   }
 
   @Autobind
-  dragOverHandler(_: DragEvent) {
-    const listEl = this.element.querySelector("ul")!;
-    listEl.classList.add("droppable");
+  dragOverHandler(event: DragEvent) {
+    // event.dataTransfer.types[0]がdragStartHandlerで設定したtext/plainの場合
+    if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
+      // ドラッグ＆ドロップを許可する → dropHandlerが最終的に実行される
+      event.preventDefault();
+      const listEl = this.element.querySelector("ul")!;
+      listEl.classList.add("droppable");
+    }
   }
 
-  dropHandler(_: DragEvent) {}
+  dropHandler(event: DragEvent) {
+    console.log(event.dataTransfer!.getData("text/plain"));
+  }
 
   // ドラッグ中に要素を離れた時に呼び出されるイベント
   @Autobind
