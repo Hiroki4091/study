@@ -133,3 +133,13 @@ tsc --init
 
 ## 高度な型
 - [高度なタイプ](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
+
+## Generic
+- [ユーティリティタイプ](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [Generic型](https://typescript-jp.gitbook.io/deep-dive/type-system/generics)
+
+## デコレータ
+- [デコレータ](https://www.typescriptlang.org/docs/handbook/decorators.html)
+
+## ドラッグ＆ドロップ
+- [ドラッグ＆ドロップAPI](https://developer.mozilla.org/ja/docs/Web/API/HTML_Drag_and_Drop_API)
