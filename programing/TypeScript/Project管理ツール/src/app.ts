@@ -1,23 +1,8 @@
 // トリプルスラッシュ・ディレクティブ：TypeScriptへの特別な指示になる(ファイルの間の依存関係の宣言)
 /// <reference path="drag-drop-interfaces.ts" />
+/// <reference path="project-model.ts" />
 
 namespace App {
-  // Project Type
-  enum ProjectStatus {
-    Active,
-    Finished,
-  }
-
-  class Project {
-    constructor(
-      public id: string,
-      public title: string,
-      public description: string,
-      public manday: number,
-      public status: ProjectStatus
-    ) {}
-  }
-
   // Project State Management
   type Listener<T> = (itmes: T[]) => void;
 
