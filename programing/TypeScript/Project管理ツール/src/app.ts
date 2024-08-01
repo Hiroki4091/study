@@ -1,9 +1,4 @@
 // トリプルスラッシュ・ディレクティブ：TypeScriptへの特別な指示になる(ファイルの間の依存関係の宣言)
-/// <reference path="models/drag-drop.ts" />
-/// <reference path="models/project.ts" />
-/// <reference path="state/project-state.ts" />
-/// <reference path="utill/validation.ts" />
-/// <reference path="decorators/autobind.ts" />
 /// <reference path="components/project-input.ts" />
 /// <reference path="components/project-list.ts" />
 
