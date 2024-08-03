@@ -143,3 +143,6 @@ tsc --init
 
 ## ドラッグ＆ドロップ
 - [ドラッグ＆ドロップAPI](https://developer.mozilla.org/ja/docs/Web/API/HTML_Drag_and_Drop_API)
+
+## Javasclipt Module
+-[モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
