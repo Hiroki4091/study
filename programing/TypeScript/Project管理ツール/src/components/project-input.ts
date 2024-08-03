@@ -1,5 +1,6 @@
-import { Component } from "./base-component.js";
-import { Validatable, validate } from "../utill/validation.js";
+import Component from "./base-component.js";
+// ファイルの中のものを全てまとめてimportして別名をつける
+import * as Validation from "../utill/validation.js";
 import { Autobind } from "../decorators/autobind.js";
 import { projectState } from "../state/project-state.js";
 // ProjectInput class
@@ -39,18 +40,18 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     const enteredManday = this.mandayInputElement.value;
 
     // バリデーション
-    const titleValidatable: Validatable = {
+    const titleValidatable: Validation.Validatable = {
       value: enteredTitle,
       required: true,
     };
 
-    const descriptionValidatable: Validatable = {
+    const descriptionValidatable: Validation.Validatable = {
       value: enteredDescription,
       required: true,
       minLength: 5,
     };
 
-    const mandayValidatable: Validatable = {
+    const mandayValidatable: Validation.Validatable = {
       value: +enteredManday,
       required: true,
       min: 1,
@@ -59,9 +60,9 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 
     // 1つでもfalseになればアラートが出る
     if (
-      !validate(titleValidatable) ||
-      !validate(descriptionValidatable) ||
-      !validate(mandayValidatable)
+      !Validation.validate(titleValidatable) ||
+      !Validation.validate(descriptionValidatable) ||
+      !Validation.validate(mandayValidatable)
     ) {
       alert("入力値が正しくありません。再度お試しください");
       return;
