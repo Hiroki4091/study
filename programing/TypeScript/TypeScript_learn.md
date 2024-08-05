@@ -146,3 +146,14 @@ tsc --init
 
 ## Javasclipt Module
 -[モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
+
+## webpack
+-  webpack 開発用サーバーを起動
+```
+npm run build
+```
+- webpackを自動的にクリーニング
+```
+npm install --save-dev clean-webpack-plugin
+```
+
