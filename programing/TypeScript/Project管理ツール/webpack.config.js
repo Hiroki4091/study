@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  // 開発時わかりやすいエラーメッセージが出る(開発時は設定したほうがいい)
   mode: "development",
   // ファイルを取得する
   entry: "./src/app.ts",
@@ -8,6 +9,7 @@ module.exports = {
     filename: "bundle.js",
     // 絶対パスを取得できる
     path: path.resolve(__dirname, "dist"),
+    // webpack devserverを使用するときに必要(相対パスで参照パスを指定)
     publicPath: "/dist",
   },
   devServer: {
