@@ -1,8 +1,8 @@
 // ファイル名の拡張子は.jsとする
-import { Draggable } from "../models/drag-drop.js";
-import { Project } from "../models/project.js";
-import Component from "./base-component.js";
-import { Autobind } from "../decorators/autobind.js";
+import { Draggable } from "../models/drag-drop";
+import { Project } from "../models/project";
+import Component from "./base-component";
+import { Autobind } from "../decorators/autobind";
 // ProjectItem Class
 export class ProjectItem
   extends Component<HTMLUListElement, HTMLLIElement>

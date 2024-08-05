@@ -1,8 +1,8 @@
-import Component from "./base-component.js";
+import Component from "./base-component";
 // ファイルの中のものを全てまとめてimportして別名をつける
-import * as Validation from "../utill/validation.js";
-import { Autobind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import * as Validation from "../utill/validation";
+import { Autobind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 // ProjectInput class
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
   titleInputElement: HTMLInputElement;
