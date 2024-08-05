@@ -1,14 +1,28 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development",
   // ファイルを取得する
   entry: "./src/app.ts",
   output: {
     filename: "bundle.js",
     // 絶対パスを取得できる
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist",
   },
-  devtool: "inline-source-map",
+  devServer: {
+    static: [
+      {
+        directory: path.resolve(__dirname, "dist"),
+        publicPath: "dist",
+      },
+      {
+        directory: __dirname,
+        publicPath: "/",
+      }
+    ],
+  },
+  devtool: "eval",
   module: {
     rules: [
       {
