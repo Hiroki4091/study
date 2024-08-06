@@ -10,5 +10,8 @@
   "scripts": {
     "build": "webpack --mode=development",
     "start": "webpack serve --mode=development"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
