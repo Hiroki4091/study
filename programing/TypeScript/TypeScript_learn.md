@@ -148,6 +148,13 @@ tsc --init
 -[モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
 
 ## webpack
+- install
+```
+npm install typescript ts-loader webpack webpack-cli webpack-dev-server --save-dev
+```
+```
+npm install --save-dev ts-node
+```
 -  webpack 開発用サーバーを起動
 ```
 npm run build
