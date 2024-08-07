@@ -164,3 +164,12 @@ npm run build
 npm install --save-dev clean-webpack-plugin
 ```
 -[公式ドキュメント](https://webpack.js.org/)
+
+## class-transformer
+- install
+```
+npm install class-transformer --save
+```
+```
+npm install reflect-metadata --save
+```
