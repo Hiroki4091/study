@@ -173,9 +173,11 @@ npm install class-transformer --save
 ```
 npm install reflect-metadata --save
 ```
+-[class-transformer](https://github.com/typestack/class-transformer)
 
 ## class-validator
 - install 
 ```
 npm install class-validator --save
 ```
+-[class-validator](https://github.com/typestack/class-validator)
