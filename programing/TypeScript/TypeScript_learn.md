@@ -173,3 +173,9 @@ npm install class-transformer --save
 ```
 npm install reflect-metadata --save
 ```
+
+## class-validator
+- install 
+```
+npm install class-validator --save
+```
