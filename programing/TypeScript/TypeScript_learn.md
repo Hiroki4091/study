@@ -183,3 +183,4 @@ npm install class-validator --save
 -[class-validator](https://github.com/typestack/class-validator)
 
 ## Google API
+-[developers-google](https://developers.google.com/maps/documentation/javascript/overview)
